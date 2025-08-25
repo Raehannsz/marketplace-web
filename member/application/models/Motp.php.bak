@@ -1,0 +1,29 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Motp extends CI_Model {
+
+    public function simpan_otp($nomor, $otp, $waktu) {
+    $data = [
+        'nomor' => $nomor,
+        'otp' => $otp,
+        'waktu' => $waktu
+    ];
+
+    // Simpan ke database
+    $this->db->insert('otp', $data);
+}
+
+
+
+    public function cek_otp($nomor, $kode) {
+        return $this->db->get_where('otp', [
+            'nomor' => $nomor,
+            'otp' => $kode
+        ])->row_array();
+    }
+
+    public function otp_masih_aktif($otp_record) {
+        return strtotime($otp_record['waktu']) >= time();
+    }
+}

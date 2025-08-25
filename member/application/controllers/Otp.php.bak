@@ -1,0 +1,90 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Otp extends CI_Controller {
+
+    public function __construct() {
+    parent::__construct();
+    $this->load->model('Motp');
+}
+
+    public function index() {
+        if (!$this->session->userdata('otp_nomor')) {
+            redirect('register');
+        }
+
+        $this->load->view('header');
+        $this->load->view('otp');
+        $this->load->view('footer');
+    }
+
+    public function verify() {
+        $nomor = $this->session->userdata('otp_nomor');
+        $kode = $this->input->post('otp_code');
+
+        $otp = $this->Motp->cek_otp($nomor, $kode);
+
+        if (!$otp) {
+            $this->session->set_flashdata('error', 'Kode OTP salah.');
+            redirect('otp');
+        }
+
+        if (!$this->Motp->otp_masih_aktif($otp)) {
+            $this->session->set_flashdata('error', 'Kode OTP sudah kadaluarsa.');
+            redirect('otp');
+        }
+
+        $this->session->unset_userdata('otp_nomor');
+        $this->session->set_flashdata('pesan_sukses', 'OTP valid! Silakan login.');
+
+        // disini anda sudah tau otp benar, berarti anda bisa dong mendpatkan data pelanggan dari otp/no wa. maka query dapatkan pelanggan by no wa
+        // simpan data pelanggan itu ke session, sehingga dia auto login 
+        redirect('/');
+    }
+
+    public function resend() {
+        $nomor = $this->session->userdata('otp_nomor');
+
+        if (!$nomor) {
+            redirect('register');
+        }
+
+        $otp = rand(100000, 999999);
+        $waktu= date('Y-m-d H:i:s', strtotime('+5 minutes'));
+
+        $this->Motp->simpan_otp($nomor, $otp, $waktu);
+        $this->_kirim_otp_fonnte($nomor, $otp);
+
+        $this->session->set_flashdata('pesan_sukses', 'Kode OTP baru telah dikirim ulang.');
+        redirect('otp');
+    }
+
+    function _kirim_otp_fonnte($wa, $otp) {
+        $token = 'MF9suXPqggqWWsizsZUx';
+
+        $pesan = "Kode OTP kamu adalah *$otp*. Berlaku selama 5 menit.";
+
+        $wa = preg_replace('/[^0-9]/', '', $wa);
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.fonnte.com/send",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => array(
+                'target' => $wa,
+                'message' => $pesan,
+                'countryCode' => '62'
+            ),
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: $token"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+        log_message('debug', 'OTP sent via Fonnte: ' . $response);
+    }
+
+}
