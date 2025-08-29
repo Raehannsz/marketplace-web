@@ -57,12 +57,20 @@
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 <script>
   const options = {
-            strings: ["Hansz Shop", "Raehan MH", "23.12.2884"],
-            typeSpeed: 100,
-            backSpeed: 50,
-            loop: true
-        };
-        new Typed('.auto-type', options); 
+    strings: ["Hansz Shop", "Raehan MH", "23.12.2884"],
+    typeSpeed: 100,
+    backSpeed: 50,
+    loop: true
+  };
+    new Typed('.auto-type', options);
+        
+  const optionsMain = {
+    strings: ["Menarik", "Terbaik", "Murahh!!"],
+    typeSpeed: 80,
+    backSpeed: 50,
+    loop: true
+  };
+    new Typed('.auto-type-main', optionsMain);
 </script>
 
 <!-- Tilt Gambar Artikel -->

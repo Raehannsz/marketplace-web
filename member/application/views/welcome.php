@@ -44,13 +44,58 @@
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
   will-change: transform;
 }
-
 .image-container:hover .tilt-image {
   transform: scale(1.05) rotateY(15deg) rotateX(10deg);
 }
+  #carouselExampleCaptions {
+    max-width: 1200px;       
+    height: 450px;          
+    margin: auto;           
+    border-radius: 10px;    
+    overflow: hidden;
+    margin-bottom: 38px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+  }
 
+  #carouselExampleCaptions img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+  .carousel-caption span {
+    font-size: 2rem !important; /* Ukuran teks caption */
+  }
+  .scroll-wrapper {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      background: #111;
+      padding: 20px 0;
+    }
+
+    .scroll-content {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll 20s linear infinite;
+    }
+
+    .scroll-content span {
+      display: inline-block;
+      font-size: 40px;
+      font-weight: bold;
+      margin-right: 50px;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
 </style>
-
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
 
@@ -76,6 +121,12 @@
   </button>
 </div>
 
+<div class="scroll-wrapper bg-primary text-white">
+    <div class="scroll-content" id="scrollContent">
+      <!-- Diisi lewat JS atau manual (lihat JS di bawah) -->
+    </div>
+  </div>
+
 <section class="bg-white py-5">
   <div class="container">
     <h4 class="text-center mb-5 fw-bold">Kategori Produk</h4>
@@ -92,6 +143,7 @@
   </div>
 </section>
 
+<div id="cari-produk"></div>
 <section class="bg-white py-5">
   <div class="container">
     <h4 class="text-center fw-bold">Cari Produk</h4>
@@ -135,7 +187,7 @@
     <div class="row">
       <?php foreach ($artikel as $key => $value): ?>
         <div class="col-md-4 text-center artikel-item" data-aos="fade-up">
-          <img src="<?php echo $this->config->item('url_artikel').$value['foto_artikel'] ?>" class="w-75 rounded shadow tilt-image">
+          <img src="<?php echo $this->config->item('url_artikel').$value['foto_artikel'] ?>" class="w-75 rounded shadow-lg tilt-image">
           <h6 class="mt-3 fst-italic"><?php echo $value['judul_artikel'] ?></h6>
         </div>
       <?php endforeach ?>
@@ -143,5 +195,18 @@
   </div>
 </section>
 
+<script>
+  const texts = ["Hansz Shop", "Terpercaya", "Termurah", "Teraman"];
+  const repeatCount = 20;
+  const scrollContent = document.getElementById("scrollContent");
 
+  for (let i = 0; i < repeatCount; i++) {
+    const span = document.createElement("span");
+    span.textContent = texts[i % texts.length];
+    scrollContent.appendChild(span);
+  }
+
+  scrollContent.innerHTML += scrollContent.innerHTML;
+
+</script>
 
