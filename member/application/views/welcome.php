@@ -56,7 +56,6 @@
     margin-bottom: 38px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
   }
-
   #carouselExampleCaptions img {
     height: 100%;
     object-fit: cover;
@@ -130,11 +129,11 @@
 <section class="bg-white py-5">
   <div class="container">
     <h4 class="text-center mb-5 fw-bold">Kategori Produk</h4>
-    <div class="row">
+    <div class="row justify-content-center">
       <?php foreach ($kategori as $key => $value): ?>
-        <div class="col-md-4 text-center kategori-item mb-3" data-aos="fade-down">
+        <div class="col-md-3 text-center kategori-item mb-3" data-aos="fade-down">
           <a href="<?php echo base_url("kategori/detail/".$value['id_kategori']) ?>" class="text-decoration-none">
-            <img src="<?php echo $this->config->item('url_kategori').$value['foto_kategori'] ?>" class="w-50 rounded-circle shadow kategori-img">
+            <img src="<?php echo $this->config->item('url_kategori').$value['foto_kategori'] ?>" class="foto-kategori w-25 rounded-circle shadow kategori-img">
             <h5 class="mt-3 text-dark"><?php echo $value['nama_kategori'] ?></h5>
           </a>
         </div>
@@ -163,15 +162,15 @@
 <section class="bg-light py-5">
   <div class="container">
     <h4 class="text-center mb-5 fw-bold">Produk Terbaru</h4>
-    <div class="row">
+    <div class="row justify-content-center">
       <?php foreach ($produk as $key => $value): ?>
-        <div class="col-md-3" data-aos="fade-up">
-          <a href="<?php echo base_url("produk/detail/".$value["id_produk"]) ?>" class="text-decoration-none">
-            <div class="card mb-3 border-0 shadow">
+        <div class="col-md-2 d-flex justify-content-center" data-aos="fade-up">
+          <a href="<?php echo base_url("produk/detail/".$value["id_produk"]) ?>" class="text-decoration-none w-100">
+            <div class="card mb-3 border-0 shadow h-100 d-flex flex-column">
               <img src="<?php echo $this->config->item('url_produk').$value['foto_produk'] ?>" class="rounded-top produk-img">
-              <div class="card-body text-center">
-                <h6><?php echo $value['nama_produk'] ?></h6>
-                <span>Rp<?php echo number_format($value['harga_produk']) ?></span>
+              <div class="card-body text-center d-flex flex-column">
+                <h6 class="mb-2"><?php echo $value['nama_produk'] ?></h6>
+                <span class="mt-auto">Rp<?php echo number_format($value['harga_produk']) ?></span>
               </div>
             </div>
           </a>
@@ -180,6 +179,7 @@
     </div>
   </div>
 </section>
+
 
 <section class="bg-white py-5">
   <div class="container image-container">
