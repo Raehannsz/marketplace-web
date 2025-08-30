@@ -1,7 +1,16 @@
-<div class="container">
+<div class="container bg-white w-75 p-4 rounded shadow">
 	<div class="row">
-		<div class="col-md-8 offset-md-2">
-			<h5 class="fs-3 fw-bold mt-2 mb-2">Registrasi Member</h5>
+
+		<div class="col-md-6 border border-2 rounded d-flex justify-content-center align-items-center" style="overflow: hidden;">
+		<div>
+			<h5 id="randomText" class="fw-bold mt-2 mb-2 text-center random-text">
+				Hansz Shop
+			</h5>
+		</div>
+	</div>
+
+		<div class="col-md-6">
+			<h5 class="fs-3 fw-bold mt-2 mb-2 text-center">Registrasi Member</h5>
 			<form method="post">	
 				<div class="mb-3">
 					<label>Email</label>
