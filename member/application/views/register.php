@@ -1,17 +1,17 @@
-<div class="container bg-white w-75 p-4 rounded shadow">
+<div class="container bg-white w-75 p-4 rounded-4 shadow">
 	<div class="row">
 
-	<div class="col-md-6 bg-primary border border-2 rounded d-flex justify-content-center align-items-center"
-     style="overflow: hidden; font-size: 4vw; background: linear-gradient(135deg, #007bff, #6f42c1);">
-		<div>
-			<h1 id="randomText" class="fw-bold mt-2 mb-2 text-center text-white random-text">
-			Hansz Shop
-			</h1>
-		</div>
-	</div>
+	<div class="col-md-6 border border-2 rounded-4 d-flex justify-content-center align-items-center position-relative z-0"
+     style="overflow: hidden; font-size: 4vw; background: linear-gradient(135deg, #007bff, #6f42c1); ">
+  <div>
+    <h1 id="randomText" class="fw-bold mt-2 mb-2 text-center text-white random-text">
+      Hansz Shop
+    </h1>
+  </div>
+</div>
 
 		<div class="col-md-6">
-			<h5 class="fs-3 fw-bold mt-2 mb-2 text-center">Registrasi Member</h5>
+			<h5 class="fs-3 fw-bold mt-2 mb-2 text-center">Registrasi</h5>
 			<form method="post">	
 				<div class="mb-3">
 					<label>Email</label>

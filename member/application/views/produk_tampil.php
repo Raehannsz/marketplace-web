@@ -17,7 +17,7 @@
 	<h5 class="fs-3 fw-bold mt-3">Produk Terbaru</h5>
 	<div class="row">
 		<?php foreach ($produk as $key => $value): ?>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<a href="<?php echo base_url("produk/detail/".$value['id_produk']) ?>" class="text-decoration-none">
 					<div class="card border-0 shadow-sm mt-3">
 						<img class="produk-img" src="<?php echo $this->config->item("url_produk").$value['foto_produk'] ?>">

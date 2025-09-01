@@ -4,7 +4,7 @@
 		Melalui panel ini Anda dapat mengelola produk yang Anda jual dan juga yang Anda beli.
 	</p>
 
-	<div class="row">
+	<div class="row justify-content-center">
 		<div class="col-md-3">
 			<div class="card text-bg-primary mb-3">
 				<div class="card-header">Produk</div>
