@@ -1,12 +1,15 @@
 <div class="container">
 	<?php if (empty($keranjang)): ?>
-		<div class="text-bg-light p-3 my-3 lead rounded d-flex justify-content-between align-items-center">
-			<span>
-				<i class="bi bi-cart-x-fill"></i> Yaahh, Keranjang Belanja Masih Kosong
-			</span>
-			<a href="<?php echo base_url('produk') ?>" class="btn btn-primary">Ayo Belanja!</a>
-		</div>	
-	<?php endif; ?>
+		<div class="d-flex justify-content-center align-items-center">
+			<div class="card text-center shadow p-5">
+			<div class="card-body">
+				<h1 class="card-title"><i class="bi bi-cart-x-fill text-danger" style="font-size: 100px;"></i></h1>
+				<p class="card-text lead mb-4">Yaahh, Keranjang Belanja Masih Kosong</p>
+				<a href="<?php echo base_url('produk') ?>" class="btn btn-primary btn-lg">Ayo Belanja!</a>
+			</div>
+			</div>
+		</div>
+		<?php endif; ?>
 	<?php foreach ($keranjang as $key => $per_penjual): ?>
 		<div class="mb-5 mt-3">
 			<h3>Toko <?php echo $per_penjual['nama_member']; ?></h3>
