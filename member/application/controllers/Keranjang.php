@@ -74,4 +74,19 @@ class Keranjang extends CI_Controller {
 		$this->load->view('checkout', $data);
 		$this->load->view('footer');
 	}
+
+	public function update_jumlah()
+{
+    $id_keranjang = $this->input->post('id_keranjang');
+    $jumlah = (int)$this->input->post('jumlah');
+
+    if ($jumlah < 1) $jumlah = 1;
+
+    // Update ke database
+    $this->db->where('id_keranjang', $id_keranjang);
+    $this->db->update('keranjang', ['jumlah' => $jumlah]);
+
+    echo "success";
+}
+
 }

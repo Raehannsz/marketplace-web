@@ -9,33 +9,52 @@
 			</div>
 			</div>
 		</div>
-		<?php endif; ?>
+	<?php endif; ?>
 	<?php foreach ($keranjang as $key => $per_penjual): ?>
 		<div class="mb-5 mt-3">
 			<h3>Toko <?php echo $per_penjual['nama_member']; ?></h3>
 			<table class="table table-sm table-bordered">
 				<?php foreach ($per_penjual['produk'] as $k => $per_produk): ?>
-					<thead>
+					<thead class="table-light">
 						<tr>
 							<th>Produk</th>
-							<th>Harga</th>
+							<th>Harga Satuan</th>
 							<th>Qty</th>
+							<th>Harga Total</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>
-								<img src="<?php echo $this->config->item('url_produk').$per_produk['foto_produk'] ?>" width="70"> <br>
-								<?php echo $per_produk['nama_produk'] ?>
-							</td>
-							<td>Rp<?php echo number_format($per_produk['harga_produk']) ?></td>
-							<td><?php echo $per_produk['jumlah'] ?></td>
-							<td>
-								<a href="<?php echo base_url("keranjang/hapus/".$per_produk['id_keranjang']) ?>" class="btn btn-danger btn-sm">Hapus</a>
-							</td>
-						</tr>
-					</tbody>
+  <tr>
+    <td>
+      <img src="<?php echo $this->config->item('url_produk') . $per_produk['foto_produk'] ?>" width="70">
+      <?php echo $per_produk['nama_produk'] ?>
+    </td>
+    
+    <td>
+      Rp<span class="harga-satuan"><?php echo number_format($per_produk['harga_produk']) ?></span>
+    </td>
+    
+    <td>
+      <div class="input-group input-group-sm" style="width: 120px;">
+        <button class="btn btn-outline-secondary btn-kurang" type="button">-</button>
+        <input type="number" min="1" class="form-control text-center jumlah-input" value="<?php echo $per_produk['jumlah'] ?>" data-harga="<?php echo $per_produk['harga_produk'] ?>" data-id="<?php echo $per_produk['id_keranjang'] ?>">
+        <button class="btn btn-outline-secondary btn-tambah" type="button">+</button>
+      </div>
+    </td>
+    
+    <td>
+      <span class="fw-bold text-success">Rp<span class="total-harga">
+        <?php echo number_format($per_produk['harga_produk'] * $per_produk['jumlah']) ?>
+      </span></span>
+    </td>
+
+    <td>
+      <a href="<?php echo base_url("keranjang/hapus/" . $per_produk['id_keranjang']) ?>" class="btn btn-danger btn-sm">Hapus</a>
+    </td>
+  </tr>
+</tbody>
+
 				<?php endforeach ?>
 			</table>
 
@@ -51,3 +70,52 @@
 		</div>
 	<?php endforeach ?>
 </div>
+
+<script>
+  document.querySelectorAll('.input-group').forEach(group => {
+    const btnMinus = group.querySelector('.btn-kurang');
+    const btnPlus = group.querySelector('.btn-tambah');
+    const inputJumlah = group.querySelector('.jumlah-input');
+    const hargaSatuan = parseInt(inputJumlah.dataset.harga);
+    const idKeranjang = inputJumlah.dataset.id;
+    const totalHargaEl = group.closest('tr').querySelector('.total-harga');
+
+    function updateTotal() {
+      let jumlah = parseInt(inputJumlah.value);
+      if (jumlah < 1) jumlah = 1;
+      const total = hargaSatuan * jumlah;
+      totalHargaEl.textContent = total.toLocaleString('id-ID');
+
+      // Kirim ke server via AJAX
+      fetch("<?php echo base_url('keranjang/update_jumlah'); ?>", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `id_keranjang=${idKeranjang}&jumlah=${jumlah}`
+      })
+      .then(response => response.text())
+      .then(res => {
+        console.log("Berhasil update jumlah:", res);
+      })
+      .catch(err => {
+        console.error("Gagal update jumlah:", err);
+      });
+    }
+
+    btnMinus.addEventListener('click', () => {
+      let val = parseInt(inputJumlah.value);
+      if (val > 1) {
+        inputJumlah.value = val - 1;
+        updateTotal();
+      }
+    });
+
+    btnPlus.addEventListener('click', () => {
+      inputJumlah.value = parseInt(inputJumlah.value) + 1;
+      updateTotal();
+    });
+
+    inputJumlah.addEventListener('change', updateTotal);
+  });
+</script>
