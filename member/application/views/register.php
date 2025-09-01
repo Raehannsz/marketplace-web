@@ -1,11 +1,11 @@
 <div class="container bg-white w-75 p-4 rounded shadow">
 	<div class="row">
 
-		<div class="col-md-6 border border-2 rounded d-flex justify-content-center align-items-center" style="overflow: hidden;">
+	<div class="col-md-6 border border-2 rounded d-flex justify-content-center align-items-center" style="overflow: hidden; font-size: 4vw;">
 		<div>
-			<h5 id="randomText" class="fw-bold mt-2 mb-2 text-center random-text">
+			<h1 id="randomText" class="fw-bold mt-2 mb-2 text-center random-text">
 				Hansz Shop
-			</h5>
+			</h1>
 		</div>
 	</div>
 
