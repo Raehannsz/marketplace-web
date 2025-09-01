@@ -1,10 +1,11 @@
 <div class="container bg-white w-75 p-4 rounded shadow">
 	<div class="row">
 
-	<div class="col-md-6 border border-2 rounded d-flex justify-content-center align-items-center" style="overflow: hidden; font-size: 4vw;">
+	<div class="col-md-6 bg-primary border border-2 rounded d-flex justify-content-center align-items-center"
+     style="overflow: hidden; font-size: 4vw; background: linear-gradient(135deg, #007bff, #6f42c1);">
 		<div>
-			<h1 id="randomText" class="fw-bold mt-2 mb-2 text-center random-text">
-				Hansz Shop
+			<h1 id="randomText" class="fw-bold mt-2 mb-2 text-center text-white random-text">
+			Hansz Shop
 			</h1>
 		</div>
 	</div>
@@ -14,22 +15,22 @@
 			<form method="post">	
 				<div class="mb-3">
 					<label>Email</label>
-					<input type="text" name="email_member" class="form-control" value="<?php echo set_value("email_member") ?>">
+					<input type="text" name="email_member" class="form-control" value="<?php echo set_value("email_member") ?>" placeholder="example@email.com">
 					<span class="text-danger"><?php echo form_error("email_member") ?></span>
 				</div>
 				<div class="mb-3">
 					<label>Password</label>
-					<input type="text" name="password_member" class="form-control" value="<?php echo set_value("password_member") ?>">
+					<input type="text" name="password_member" class="form-control" value="<?php echo set_value("password_member") ?>" placeholder="Masukkan password...">
 					<span class="text-danger"><?php echo form_error("password_member") ?></span>
 				</div>
 				<div class="mb-3">
 					<label>Nama</label>
-					<input type="text" name="nama_member" class="form-control" value="<?php echo set_value("nama_member") ?>">
+					<input type="text" name="nama_member" class="form-control" value="<?php echo set_value("nama_member") ?>" placeholder="Masukkan nama lengkap...">
 					<span class="text-danger"><?php echo form_error("nama_member") ?></span>
 				</div>
 				<div class="mb-3">
 					<label>Nomor WhatsApp</label>
-					<input type="text" name="wa_member" class="form-control" value="<?php echo set_value("wa_member") ?>">
+					<input type="text" name="wa_member" class="form-control" value="<?php echo set_value("wa_member") ?>" placeholder="Masukkan nomor WhatsApp...">
 					<span class="text-danger"><?php echo form_error("wa_member") ?></span>
 				</div>
 				<div class="mb-3">
