@@ -2,15 +2,22 @@
 	<h3 class="mt-3 fw-bold">Checkout</h3>
 
 	<table class="table">
-		<tbody>
+		<thead>
+			<tr>
+				<th>Produk</th>
+				<th>Harga Satuan</th>
+				<th>Qty</th>
+				<th>Harga Total</th>
+			</tr>
+		</thead>
+		<tbody class="table-primary">
 			<?php $total = 0; ?>
 			<?php foreach ($keranjang as $k => $per_produk): ?>
 				<?php $subtotal = $per_produk['jumlah'] * $per_produk['harga_produk'] ?>
 				<?php $total+=$subtotal; ?>
 				<tr>
 					<td>
-						<img src="<?php echo $this->config->item('url_produk').$per_produk['foto_produk'] ?>" width="70"> <br>
-						<?php echo $per_produk['nama_produk'] ?>
+						<img src="<?php echo $this->config->item('url_produk').$per_produk['foto_produk'] ?>" width="70"> <?php echo $per_produk['nama_produk'] ?>
 					</td>
 					<td>Rp<?php echo number_format($per_produk['harga_produk']) ?></td>
 					<td><?php echo $per_produk['jumlah'] ?></td>
@@ -59,7 +66,7 @@
 					<?php endforeach ?>	
 				</select>
 				<div class="text-muted text-danger"><?php echo form_error('ongkir') ?></div>
-				<button class="btn btn-primary">Checkout</button>
+				<button class="btn btn-primary">Buat Pesanan</button>
 			</form>
 		</div>
 	</div>

@@ -25,35 +25,35 @@
 						</tr>
 					</thead>
 					<tbody>
-  <tr>
-    <td>
-      <img src="<?php echo $this->config->item('url_produk') . $per_produk['foto_produk'] ?>" width="70">
-      <?php echo $per_produk['nama_produk'] ?>
-    </td>
-    
-    <td>
-      Rp<span class="harga-satuan"><?php echo number_format($per_produk['harga_produk']) ?></span>
-    </td>
-    
-    <td>
-      <div class="input-group input-group-sm" style="width: 120px;">
-        <button class="btn btn-outline-secondary btn-kurang" type="button">-</button>
-        <input type="number" min="1" class="form-control text-center jumlah-input" value="<?php echo $per_produk['jumlah'] ?>" data-harga="<?php echo $per_produk['harga_produk'] ?>" data-id="<?php echo $per_produk['id_keranjang'] ?>">
-        <button class="btn btn-outline-secondary btn-tambah" type="button">+</button>
-      </div>
-    </td>
-    
-    <td>
-      <span class="fw-bold text-success">Rp<span class="total-harga">
-        <?php echo number_format($per_produk['harga_produk'] * $per_produk['jumlah']) ?>
-      </span></span>
-    </td>
+					<tr>
+						<td>
+							<img src="<?php echo $this->config->item('url_produk') . $per_produk['foto_produk'] ?>" width="70">
+							<?php echo $per_produk['nama_produk'] ?>
+						</td>
+						
+						<td>
+						Rp<span class="harga-satuan"><?php echo number_format($per_produk['harga_produk']) ?></span>
+						</td>
+						
+						<td>
+						<div class="input-group input-group-sm" style="width: 120px;">
+							<button class="btn btn-outline-secondary btn-kurang" type="button">-</button>
+							<input type="number" min="1" class="form-control text-center jumlah-input" value="<?php echo $per_produk['jumlah'] ?>" data-harga="<?php echo $per_produk['harga_produk'] ?>" data-id="<?php echo $per_produk['id_keranjang'] ?>">
+							<button class="btn btn-outline-secondary btn-tambah" type="button">+</button>
+						</div>
+						</td>
+						
+						<td>
+						<span class="fw-bold text-success">Rp<span class="total-harga">
+							<?php echo number_format($per_produk['harga_produk'] * $per_produk['jumlah']) ?>
+						</span></span>
+						</td>
 
-    <td>
-      <a href="<?php echo base_url("keranjang/hapus/" . $per_produk['id_keranjang']) ?>" class="btn btn-danger btn-sm">Hapus</a>
-    </td>
-  </tr>
-</tbody>
+						<td>
+						<a href="<?php echo base_url("keranjang/hapus/" . $per_produk['id_keranjang']) ?>" class="btn btn-danger btn-sm">Hapus</a>
+						</td>
+					</tr>
+					</tbody>
 
 				<?php endforeach ?>
 			</table>
