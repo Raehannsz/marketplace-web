@@ -33,6 +33,13 @@
   background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent);
   z-index: 1;
 }
+.nama-produk {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
 .carousel-caption {
   z-index: 2;
   position: absolute;
@@ -62,20 +69,17 @@
       background: #111;
       padding: 20px 0;
     }
-
     .scroll-content {
       display: inline-block;
       white-space: nowrap;
       animation: scroll 20s linear infinite;
     }
-
     .scroll-content span {
       display: inline-block;
       font-size: 40px;
       font-weight: bold;
       margin-right: 50px;
     }
-
     @keyframes scroll {
       0% {
         transform: translateX(0);
@@ -151,21 +155,23 @@
 
 <section class="bg-light py-5">
   <div class="container">
-    <h4 class="text-center mb-5 fw-bold">Produk Terbaru</h4>
+    <h4 class="text-center mb-4 fw-bold">Produk Terbaru</h4>
     <div class="row justify-content-center">
       <?php foreach ($produk as $key => $value): ?>
         <div class="col-6 col-md-2 col-sm-3 d-flex justify-content-center" data-aos="fade-up">
           <a href="<?php echo base_url("produk/detail/".$value["id_produk"]) ?>" class="text-decoration-none w-100">
-            <div class="card mb-3 border-0 shadow h-100 d-flex flex-column">
+            <div class="card border-0 shadow h-100 d-flex flex-column">
               <img src="<?php echo $this->config->item('url_produk').$value['foto_produk'] ?>" class="rounded-top produk-img">
               <div class="card-body text-center d-flex flex-column">
-                <h6 class="mb-2"><?php echo $value['nama_produk'] ?></h6>
-                <span class="mt-auto">Rp<?php echo number_format($value['harga_produk']) ?></span>
+                <h6 class="nama-produk"><?php echo $value['nama_produk'] ?></h6>
+                <hr>
+                <span class="">Rp<?php echo number_format($value['harga_produk']) ?></span>
               </div>
             </div>
           </a>
         </div>
       <?php endforeach ?>
+      <a class="justify-content-center text-center mt-5" href="<?php echo base_url('produk') ?>" data-aos="fade-down" data-aos-offset="10">Lihat Produk lainnya</a>
     </div>
   </div>
 </section>
@@ -174,9 +180,9 @@
 <section class="bg-white py-5">
   <div class="container image-container">
     <h4 class="text-center mb-5 fw-bold">Artikel Terbaru</h4>
-    <div class="row">
+    <div class="row justify-content-center">
       <?php foreach ($artikel as $key => $value): ?>
-        <div class="col-md-4 text-center artikel-item" data-aos="fade-up">
+        <div class="col-md-3 text-center artikel-item" data-aos="fade-up">
           <img src="<?php echo $this->config->item('url_artikel').$value['foto_artikel'] ?>" class="w-75 rounded shadow-lg tilt-image">
           <h6 class="mt-3 fst-italic"><?php echo $value['judul_artikel'] ?></h6>
         </div>
