@@ -131,7 +131,7 @@
     <h4 class="text-center mb-5 fw-bold">Kategori Produk</h4>
     <div class="row justify-content-center">
       <?php foreach ($kategori as $key => $value): ?>
-        <div class="col-md-3 text-center kategori-item mb-3" data-aos="fade-down">
+        <div class="col-6 col-md-4 col-sm-3 text-center kategori-item mb-3" data-aos="fade-down">
           <a href="<?php echo base_url("kategori/detail/".$value['id_kategori']) ?>" class="text-decoration-none">
             <img src="<?php echo $this->config->item('url_kategori').$value['foto_kategori'] ?>" class="foto-kategori w-25 rounded-circle shadow kategori-img">
             <h5 class="mt-3 text-dark"><?php echo $value['nama_kategori'] ?></h5>
