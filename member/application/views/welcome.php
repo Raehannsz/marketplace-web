@@ -164,7 +164,7 @@
     <h4 class="text-center mb-5 fw-bold">Produk Terbaru</h4>
     <div class="row justify-content-center">
       <?php foreach ($produk as $key => $value): ?>
-        <div class="col-md-2 d-flex justify-content-center" data-aos="fade-up">
+        <div class="col-6 col-md-2 col-sm-3 d-flex justify-content-center" data-aos="fade-up">
           <a href="<?php echo base_url("produk/detail/".$value["id_produk"]) ?>" class="text-decoration-none w-100">
             <div class="card mb-3 border-0 shadow h-100 d-flex flex-column">
               <img src="<?php echo $this->config->item('url_produk').$value['foto_produk'] ?>" class="rounded-top produk-img">
