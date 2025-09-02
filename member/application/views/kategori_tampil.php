@@ -15,7 +15,7 @@
   <h5 class="fs-3 fw-bold mt-3 mb-3">Kategori Produk</h5>
   <div class="row">
     <?php foreach($kategori as $key => $value): ?>
-      <div class="col-6 col-md-4 col-sm-4 mb-3">
+      <div class="col-6 col-md-3 col-sm-4 mb-3">
         <a href="<?php echo base_url("kategori/detail/".$value['id_kategori']) ?>" class="text-decoration-none">
           <div class="card border-0 shadow kategori-item">
             <img src="<?php echo $this->config->item("url_kategori").$value['foto_kategori'] ?>" class="card-img-top kategori-img" alt="...">
