@@ -16,6 +16,15 @@
 	.zoom-image:hover {
 		transform: scale(1.2); /* Perbesar gambar saat hover */
 	}
+	.deskripsi-produk {
+		line-height: 1.7;
+		text-align: justify;
+	}
+	@media (max-width: 768px) {
+    	.deskripsi-produk {
+		text-align: left;
+    }
+  }
 </style>
 
 <div class="container py-3">
@@ -26,21 +35,20 @@
 		<div class="col-md-6">
 			<h1><?php echo $produk['nama_produk'] ?></h1>
 				<span class="badge badge-lg bg-dark"><?php echo $produk['nama_kategori'] ?></span>
-					<p class="lead">Rp<?php echo number_format($produk["harga_produk"]) ?></p>
-					<br>
-					<p><?php echo $produk['deskripsi_produk'] ?></p>
-
-			<?php if ($produk['id_member']!==$this->session->userdata("id_member")): ?>
-				<form class="my-2" method="post">
-					<div class="input-group">
-						<input type="text" name="jumlah" class="form-control" min="1" value="1" required>
-						<button class="btn btn-primary">Beli</button>
-					</div>
-				</form>
-			<?php endif ?>
+					<p class="lead mt-2">Rp<?php echo number_format($produk["harga_produk"]) ?></p>
+					<?php if ($produk['id_member']!==$this->session->userdata("id_member")): ?>
+						<form class="my-2" method="post">
+							<div class="input-group mb-3">
+								<input type="text" name="jumlah" class="form-control" min="1" value="1" required>
+								<button class="btn btn-primary">Beli</button>
+							</div>
+						</form>
+					<?php endif ?>
+					<h5 class="fw-bold bg-light p-2 rounded">Deskripsi Produk:</h5>
+					<p class="deskripsi-produk border p-2 rounded"><?php echo nl2br($produk['deskripsi_produk']) ?></p>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
 
 <script>
 	const container = document.querySelector('.col-md-6');
