@@ -1,3 +1,11 @@
+<style>
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+</style>
+
 <div class="container">
 	<?php if (empty($keranjang)): ?>
 		<div class="d-flex justify-content-center align-items-center">
@@ -36,17 +44,16 @@
 						</td>
 						
 						<td>
-						<div class="input-group input-group-sm" style="width: 120px;">
-							<button class="btn btn-outline-secondary btn-kurang" type="button">-</button>
+						<div class="input-group input-group-sm" style="width: 90px;">
+							<button class="btn btn-danger btn-kurang" type="button">-</button>
 							<input type="number" min="1" class="form-control text-center jumlah-input" value="<?php echo $per_produk['jumlah'] ?>" data-harga="<?php echo $per_produk['harga_produk'] ?>" data-id="<?php echo $per_produk['id_keranjang'] ?>">
-							<button class="btn btn-outline-secondary btn-tambah" type="button">+</button>
+							<button class="btn btn-primary btn-tambah" type="button">+</button>
 						</div>
 						</td>
 						
 						<td>
 						<span class="fw-bold text-success">Rp<span class="total-harga">
 							<?php echo number_format($per_produk['harga_produk'] * $per_produk['jumlah']) ?>
-						</span></span>
 						</td>
 
 						<td>
@@ -86,7 +93,6 @@
       const total = hargaSatuan * jumlah;
       totalHargaEl.textContent = total.toLocaleString('id-ID');
 
-      // Kirim ke server via AJAX
       fetch("<?php echo base_url('keranjang/update_jumlah'); ?>", {
         method: "POST",
         headers: {
