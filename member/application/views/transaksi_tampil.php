@@ -26,7 +26,7 @@
 					<h6>Resi: <?php echo $value['resi_ekspedisi'] ?></h6>
 				</td>
 				<td>
-					<a href="<?php echo base_url("transaksi/detail/".$value["id_transaksi"]) ?>" class="btn btn-info">Detail</a>
+					<a href="<?php echo base_url("transaksi/detail/".$value["id_transaksi"]) ?>" class="btn btn-primary text-white">Detail</a>
 				</td>
 			</tr>
 			<?php endforeach ?>
