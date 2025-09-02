@@ -37,16 +37,6 @@
   z-index: 2;
   position: absolute;
 }
-
-.tilt-image {
-  transition: transform 0.1s ease;
-  transform-style: preserve-3d;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  will-change: transform;
-}
-.image-container:hover .tilt-image {
-  transform: scale(1.05) rotateY(15deg) rotateX(10deg);
-}
   #carouselExampleCaptions {
     max-width: 1200px;       
     height: 450px;          
