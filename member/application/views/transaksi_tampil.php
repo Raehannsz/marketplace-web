@@ -18,7 +18,7 @@
 			<tr>
 				<td> <?php echo $key+1; ?></td>
 				<td> <?php echo date('d M Y H:i', strtotime($value['tanggal_transaksi'])); ?></td>
-				<td> <?php echo number_format($value['total_transaksi']); ?></td>
+				<td>Rp<?php echo number_format($value['total_transaksi']); ?></td>
 				<td>
 					<span class="badge bg-success">
 					<?php echo $value['status_transaksi']; ?>
