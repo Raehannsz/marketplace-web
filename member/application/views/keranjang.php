@@ -73,7 +73,6 @@
 					<a href="<?php echo base_url("keranjang/checkout/".$per_penjual['id_member']) ?>" class="btn btn-primary">Checkout</a>
 				</div>
 			</div>
-			
 		</div>
 	<?php endforeach ?>
 </div>

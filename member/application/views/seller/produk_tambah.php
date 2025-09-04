@@ -1,5 +1,5 @@
 <div class="container">
-	<h5>Tambah Produk</h5>
+	<h5 class="fs-4 fw-bold">Tambah Produk</h5>
 
 	<form method="post" enctype="multipart/form-data">
 		<div class="mb-3">
@@ -15,15 +15,15 @@
 		</div>
 		<div class="mb-3">
 			<label>Nama</label>
-			<input type="text" name="nama_produk" class="form-control">
+			<input type="text" name="nama_produk" class="form-control" placeholder="Masukkan Nama Produk...">
 		</div>
 		<div class="mb-3">
 			<label>Harga</label>
-			<input type="number" name="harga_produk" class="form-control">
+			<input type="number" name="harga_produk" class="form-control" placeholder="Masukkan Harga Produk...">
 		</div>
 		<div class="mb-3">
 			<label>Berat</label>
-			<input type="number" name="berat_produk" class="form-control">
+			<input type="number" name="berat_produk" class="form-control" placeholder="Masukkan Berat Produk...">
 			<span class="text-muted small">Gram</span>
 		</div>
 		<div class="mb-3">
