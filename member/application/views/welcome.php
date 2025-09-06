@@ -95,7 +95,7 @@
 
     <?php foreach ($slider as $key => $value): ?>
 
-      <div class="carousel-item <?php echo $key==0 ? "active" : "" ?>" data-bs-interval="4000">
+      <div class="carousel-item <?php echo $key==0 ? "active" : "" ?>" data-bs-interval="3000">
         <img src="<?php echo $this->config->item("url_slider").$value['foto_slider'] ?>" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block text-start" style="left: 5%; top: 40%; right: auto;">
           <span class="fw-bold" style="font-size: 3rem; color: white;">
@@ -123,7 +123,7 @@
 
 <section class="bg-white py-5">
   <div class="container">
-    <h4 class="text-center mb-5 fw-bold">Kategori Produk</h4>
+    <h4 class="text-center mb-5 fw-bold" data-aos="fade-right">Kategori Produk</h4>
     <div class="row justify-content-center">
       <?php foreach ($kategori as $key => $value): ?>
         <div class="col-6 col-md-4 col-sm-3 text-center kategori-item mb-3" data-aos="fade-down">
@@ -140,11 +140,11 @@
 <div id="cari-produk"></div>
 <section class="bg-white py-5">
   <div class="container">
-    <h4 class="text-center fw-bold">Cari Produk</h4>
+    <h4 class="text-center fw-bold" data-aos="fade-left">Cari Produk</h4>
     <div class="row">
       <div class="col-md-6 offset-md-3">
         <form method="GET" action="<?php echo base_url('produk/cari'); ?>">
-          <div class="input-group">
+          <div class="input-group" data-aos="zoom-in">
             <input type="text" name="keyword" class="form-control" placeholder="Cari Produk...">
               <button type="submit" class="btn btn-primary">Cari</button>
           </div>
@@ -156,7 +156,7 @@
 
 <section class="bg-light py-5">
   <div class="container">
-    <h4 class="text-center mb-4 fw-bold">Produk Terbaru</h4>
+    <h4 class="text-center mb-4 fw-bold" data-aos="fade-up-right">Produk Terbaru</h4>
     <div class="row justify-content-center">
       <?php foreach ($produk as $key => $value): ?>
         <div class="col-6 col-md-2 col-sm-3 d-flex justify-content-center" data-aos="fade-up">
@@ -180,7 +180,7 @@
 
 <section class="bg-white py-5">
   <div class="container image-container">
-    <h4 class="text-center mb-5 fw-bold">Artikel Terbaru</h4>
+    <h4 class="text-center mb-5 fw-bold" data-aos="fade-up-left">Artikel Terbaru</h4>
     <div class="row justify-content-center">
       <?php foreach ($artikel as $key => $value): ?>
         <div class="col-md-3 text-center artikel-item" data-aos="fade-up">
